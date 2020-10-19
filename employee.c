@@ -1,7 +1,3 @@
-//
-// Created by Pyromaniac on 10/16/2020.
-//
-
 #include "employee.h"
 #include <stdio.h>
 #include <string.h>
@@ -25,8 +21,10 @@ Employee new_employee(){
 
     if (result.age >= 60){
         result.Status = retired;
+        result.salary_after_tax = result.salary * .95;
     } else {
         result.Status = working;
+        result.salary_after_tax = result.salary * .92;
     }
     return result;
 
@@ -36,7 +34,8 @@ void print_employee(Employee emp){
     printf("ID %d | ", emp.id);
     printf("Name: %s ", emp.name);
     printf("age: %d ", emp.age);
-    printf("salary: %f ", emp.salary);
+    printf("salary: $%f ", emp.salary);
+    printf("salary after tax reduction: $%f ", emp.salary_after_tax);
     if(emp.Status == working){
         printf("status: working.\n");
     } else {
