@@ -13,9 +13,6 @@ typedef struct Employee {
 
 }Employee;
 
-
-
 Employee new_employee();
 void print_employee(Employee emp);
-Employee *get_by_id(int number, int id, Employee *employees);
 #endif //CSCI250_2_EMPLOYEE_H

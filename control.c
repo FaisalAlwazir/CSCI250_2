@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "control.h"
 #include <string.h>
+#include <conio.h>
 
 int number;
 Employee employees[10];
@@ -29,14 +30,10 @@ int main_options() {
 }
 
 void show_all() {
+    clear_screen();
+    printf("All Employees:\n");
     for (int i = 0; i < number; i++) {
         print_employee(employees[i]);
-    }
-}
-
-void after_tax() {
-    for (int i = 0; i < number; i++) {
-
     }
 }
 
@@ -64,6 +61,8 @@ int choose_emp() {
 }
 
 void show_retired() {
+    clear_screen();
+    printf("Retired Employees:\n");
     for (int i = 0; i < number; i++) {
         if (employees[i].Status == retired) {
             print_employee(employees[i]);
@@ -80,10 +79,14 @@ void show_working() {
 }
 
 void tax(){
+    clear_screen();
+    printf("Tax Page:\n");
     int emp = choose_emp();
     print_employee(employees[emp]);
 }
 void deduct() {
+    clear_screen();
+    printf("Deduction Page:\n");
     int emp = choose_emp();
     printf("\nEnter amount to deduct off %s's salary \n", employees[emp].name);
     scanf("%f", &employees[emp].deduction);
@@ -111,7 +114,6 @@ void start_menu() {
     printf("\nWelcome!"
            "\nPlease enter the number of employees you want to create:\n");
     scanf("%d", &number);
-//    number -=1;
 
     for (int i = 0; i < number; i++) {
         clear_screen();
@@ -129,11 +131,13 @@ void start_menu() {
 }
 
 int mainMenu() {
+    clear_screen();
 
     printf("Welcome to the employee management system.\n"
     );
 
-    int c = main_options();
+    int c;
+    c = main_options();
     clear_screen();
 
     switch (c) {
@@ -154,15 +158,14 @@ int mainMenu() {
             break;
         case 6:
             show_all();
-
             break;
         case 7:
             return 1;
 
     }
-    printf("Press Enter to continue");
-    int wait;
-    scanf("%d", &wait);
+    printf("Press ENTER key to Continue\n");
+    _getch();
+
     return 0;
 
 
