@@ -26,6 +26,8 @@ Employee new_employee(){
         result.Status = working;
         result.salary_after_tax = result.salary * .92;
     }
+    result.deduction = 0;
+
     return result;
 
 }
@@ -35,7 +37,8 @@ void print_employee(Employee emp){
     printf("Name: %s ", emp.name);
     printf("age: %d ", emp.age);
     printf("salary: $%f ", emp.salary);
-    printf("salary after tax reduction: $%f ", emp.salary_after_tax);
+    printf("salary after deduction: $%f ", emp.salary - emp.deduction);
+    printf("salary after tax: $%f ", emp.salary_after_tax);
     if(emp.Status == working){
         printf("status: working.\n");
     } else {
